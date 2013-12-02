@@ -36,7 +36,8 @@ tree = PHTTP::Request.new(uri, method: :post, params: { "code" => code }).then d
   end
 end
 
-PHTTP.execute(tree).each do |name, friend_names|
+runner = PHTTP::Runner.new(default_options)
+runner.execute(tree).each do |name, friend_names|
   puts "#{name}: #{friend_names.join(", ")}"
 end
 ```
